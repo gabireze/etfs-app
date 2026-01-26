@@ -1,28 +1,42 @@
 <div [class]="isDarkTheme ? 'dark-theme' : 'light-theme'" class="min-h-screen transition-colors duration-200" [style.background-color]="'var(--bg-primary)'">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-8">
-      <h1 class="text-4xl font-bold" [style.color]="'var(--text-primary)'">Simulador de Carteira de ETFs</h1>
-      <div class="flex gap-3">
-        <button
-          (click)="toggleTheme()"
-          class="px-4 py-2 rounded-lg transition-all duration-200 font-medium border-2"
-          [style.background-color]="'var(--bg-card)'"
-          [style.color]="'var(--text-primary)'"
-          [style.border-color]="'var(--border)'"
-          title="Alternar tema">
-          {{ isDarkTheme ? '☀️' : '🌙' }} Tema
-        </button>
-        <button
-          (click)="clearCache()"
-          class="px-4 py-2 rounded-lg transition-all duration-200 font-medium"
-          [style.background-color]="'var(--accent)'"
-          [style.color]="isDarkTheme ? '#ffffff' : '#ffffff'"
-          title="Limpar cache e recarregar dados">
-          🔄 Limpar Cache
-        </button>
+  <!-- Header Minimalista -->
+  <header class="sticky top-0 z-50 backdrop-blur-sm border-b" [style.background-color]="isDarkTheme ? 'rgba(15, 23, 42, 0.8)' : 'rgba(247, 249, 252, 0.8)'" [style.border-color]="'var(--border)'">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo/Title -->
+        <h1 class="text-xl sm:text-2xl font-semibold tracking-tight" [style.color]="'var(--text-primary)'">
+          <span>Simulador ETFs</span>
+        </h1>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-2">
+          <!-- Theme Toggle -->
+          <button
+            (click)="toggleTheme()"
+            class="p-2 rounded-lg transition-all duration-200 hover:scale-105"
+            [style.background-color]="'var(--bg-secondary)'"
+            [style.color]="'var(--text-secondary)'"
+            [attr.aria-label]="isDarkTheme ? 'Ativar tema claro' : 'Ativar tema escuro'"
+            title="{{ isDarkTheme ? 'Tema claro' : 'Tema escuro' }}">
+            <span class="text-lg">{{ isDarkTheme ? '☀️' : '🌙' }}</span>
+          </button>
+
+          <!-- Clear Cache -->
+          <button
+            (click)="clearCache()"
+            class="p-2 rounded-lg transition-all duration-200 hover:scale-105"
+            [style.background-color]="'var(--bg-secondary)'"
+            [style.color]="'var(--text-secondary)'"
+            aria-label="Limpar cache"
+            title="Limpar cache e recarregar">
+            <span class="text-lg">🔄</span>
+          </button>
+        </div>
       </div>
     </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
 
   <!-- Search Container -->
   <div class="rounded-xl p-6 mb-8 shadow-lg" [style.background-color]="'var(--accent)'" [style.color]="isDarkTheme ? '#ffffff' : '#ffffff'">
@@ -230,6 +244,4 @@
     </div>
   </div>
 
-
-  </div>
 </div>
