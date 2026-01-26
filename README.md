@@ -46,8 +46,8 @@
 
 ### 1. Clone o Repositório
 ```bash
-git clone https://github.com/seu-usuario/etfs-brasil.git
-cd etfs-brasil
+git clone https://github.com/gabireze/etfs-app.git
+cd etfs-app
 ```
 
 ### 2. Instale as Dependências
@@ -183,9 +183,9 @@ Desenvolvido com ❤️ usando Angular e brapi.dev
 
 ## Suporte
 
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/etfs-brasil/issues)
+- **Issues**: [GitHub Issues](https://github.com/gabireze/etfs-app/issues)
 - **Email**: seu-email@exemplo.com
-- **Discussões**: [GitHub Discussions](https://github.com/seu-usuario/etfs-brasil/discussions)
+- **Discussões**: [GitHub Discussions](https://github.com/gabireze/etfs-app/discussions)
 
 ---
 

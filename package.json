@@ -1,6 +1,24 @@
 {
   "name": "etfs-app",
   "version": "0.0.0",
+  "description": "Simulador de Carteira de ETFs Brasil - Análise de rentabilidade com dados da B3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabireze/etfs-app.git"
+  },
+  "homepage": "https://github.com/gabireze/etfs-app#readme",
+  "bugs": {
+    "url": "https://github.com/gabireze/etfs-app/issues"
+  },
+  "keywords": [
+    "etfs",
+    "b3",
+    "investment",
+    "portfolio",
+    "angular",
+    "brazil",
+    "brapi"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
