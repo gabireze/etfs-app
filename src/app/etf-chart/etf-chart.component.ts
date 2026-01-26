@@ -584,7 +584,22 @@ export class EtfChartComponent implements OnInit {
       values.push(hasAllData ? portfolioReturn : null);
     });
 
-    const finalReturn = values[values.length - 1] || 0;
+    // Buscar o último valor válido (não-null)
+    let finalReturn = 0;
+    for (let i = values.length - 1; i >= 0; i--) {
+      if (values[i] !== null) {
+        finalReturn = values[i]!;
+        break;
+      }
+    }
+
+    console.log('💰 Portfolio Return Calculation:', {
+      totalDates: dates.length,
+      validValues: values.filter(v => v !== null).length,
+      lastValue: values[values.length - 1],
+      finalReturn
+    });
+
     return { values, finalReturn };
   }
 

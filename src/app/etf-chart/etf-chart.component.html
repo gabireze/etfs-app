@@ -188,7 +188,7 @@
            [style.color]="'#ffffff'">
         <div class="text-sm font-medium opacity-90 mb-2">Sua Carteira</div>
         <div class="text-3xl font-bold mb-2">
-          {{ portfolioReturn >= 0 ? '+' : '' }}{{ portfolioReturn.toFixed(2) }}%
+          {{ (portfolioReturn || 0) >= 0 ? '+' : '' }}{{ (portfolioReturn || 0).toFixed(2) }}%
         </div>
         <div class="text-xs opacity-80">Rentabilidade acumulada no período</div>
       </div>
