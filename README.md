@@ -6,8 +6,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![Chart.js](https://img.shields.io/badge/Chart.js-4.5-FF6384?logo=chartdotjs)](https://www.chartjs.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![Screenshot do Simulador](docs/screenshot.png)
+**[Ver Demo ao Vivo](https://etfs-app.vercel.app/)** | **[Reportar Bug](https://github.com/gabireze/etfs-app/issues)** | **[Solicitar Feature](https://github.com/gabireze/etfs-app/issues)**
 
 ## Funcionalidades
 
@@ -34,7 +35,7 @@
 
 ## Demo
 
-**[🚀 Ver Demo ao Vivo](https://etfs-app.vercel.app/)**
+**[Ver Demo ao Vivo](https://etfs-app.vercel.app/)**
 
 ## Pré-requisitos
 
@@ -64,7 +65,7 @@ BRAPI_TOKEN=seu_token_aqui
 
 **Obtenha seu token gratuito**: [brapi.dev/dashboard](https://brapi.dev/dashboard)
 
-> 💡 **Nota**: O arquivo `.env` já está no `.gitignore` - seu token não será commitado.
+> **Nota**: O arquivo `.env` já está no `.gitignore` - seu token não será commitado.
 
 ## Como Usar
 
@@ -81,7 +82,7 @@ npm run build
 ```
 Os arquivos compilados estarão em `dist/etfs-app/browser/`
 
-## 🚀 Deploy
+## Deploy
 
 ### Deploy na Vercel (Recomendado)
 Siga o guia completo: **[DEPLOY.md](./DEPLOY.md)**
@@ -89,7 +90,7 @@ Siga o guia completo: **[DEPLOY.md](./DEPLOY.md)**
 **Resumo rápido:**
 1. Importe o projeto na [Vercel](https://vercel.com/new)
 2. Configure `BRAPI_TOKEN` em Environment Variables
-3. Deploy automático ✅
+3. Deploy automático
 
 ### Deploy Manual (Netlify, GitHub Pages)
 ```bash
@@ -97,7 +98,7 @@ npm run build
 # Faça upload da pasta dist/etfs-app/browser/
 ```
 
-> ⚠️ **Importante**: Para Vercel, configure a variável `BRAPI_TOKEN` nas Environment Variables do projeto. O token será injetado automaticamente durante o build.
+> **Importante**: Para Vercel, configure a variável `BRAPI_TOKEN` nas Environment Variables do projeto. O token será injetado automaticamente durante o build.
 
 ## Arquitetura
 
@@ -137,7 +138,7 @@ src/
 - **Atualização**: Dados atualizados diariamente
 - **Rate limit (free)**: 15.000 requisições/mês
 
-💡 **Dica**: Para dados históricos mais extensos (10+ anos) e maior volume de requisições, considere o [plano Pro](https://brapi.dev/pricing).
+**Dica**: Para dados históricos mais extensos (10+ anos) e maior volume de requisições, considere o [plano Pro](https://brapi.dev/pricing).
 
 ## Temas
 
@@ -151,14 +152,14 @@ src/
 - Cards: `#1e293b`
 - Accent: `#10b981`
 
-Alterne entre temas usando o botão ☀️/🌙 no header.
+Alterne entre temas usando o botão de alternância no header.
 
 ## Segurança
 
-- ✅ Token armazenado em `.env` (não commitado)
-- ✅ `.gitignore` configurado para proteger credenciais
-- ✅ HTTPS recomendado em produção
-- ⚠️ **Importante**: Nunca exponha tokens em código cliente
+- Token armazenado em `.env` (não commitado)
+- `.gitignore` configurado para proteger credenciais
+- HTTPS recomendado em produção
+- **Importante**: Nunca exponha tokens em código cliente
 
 ## Contribuindo
 
@@ -184,7 +185,13 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## Autor
 
-Desenvolvido com ❤️ usando Angular e brapi.dev
+**Gabriel de Rezende Gonçalves**
+
+- Website: [gabireze.com.br](https://gabireze.com.br)
+- Email: [contato@gabireze.com.br](mailto:contato@gabireze.com.br)
+- GitHub: [@gabireze](https://github.com/gabireze)
+
+Desenvolvido usando Angular e brapi.dev
 
 ## Agradecimentos
 
@@ -196,12 +203,18 @@ Desenvolvido com ❤️ usando Angular e brapi.dev
 ## Suporte
 
 - **Issues**: [GitHub Issues](https://github.com/gabireze/etfs-app/issues)
-- **Email**: seu-email@exemplo.com
-- **Discussões**: [GitHub Discussions](https://github.com/gabireze/etfs-app/discussions)
+- **Email**: [contato@gabireze.com.br](mailto:contato@gabireze.com.br)
+- **Website**: [gabireze.com.br](https://gabireze.com.br)
 
 ---
 
-**Gostou do projeto? Deixe uma estrela no GitHub!**
+<p align="center">
+  Feito com dedicação por <a href="https://gabireze.com.br">Gabriel de Rezende Gonçalves</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/gabireze/etfs-app/stargazers">Deixe uma estrela no GitHub!</a>
+</p>
 
 ### Gráfico não aparece
 - Abra o console do navegador (F12) para verificar erros

@@ -1,7 +1,13 @@
 {
   "name": "etfs-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Simulador de Carteira de ETFs Brasil - Análise de rentabilidade com dados da B3",
+  "author": {
+    "name": "Gabriel de Rezende Gonçalves",
+    "email": "contato@gabireze.com.br",
+    "url": "https://gabireze.com.br"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/gabireze/etfs-app.git"
