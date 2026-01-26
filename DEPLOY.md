@@ -1,14 +1,14 @@
-# 🚀 Deploy na Vercel
+# Deploy na Vercel
 
 Este guia mostra como fazer deploy do simulador de ETFs na Vercel.
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 1. Conta na [Vercel](https://vercel.com)
 2. Token da API brapi.dev ([obtenha aqui](https://brapi.dev/dashboard))
 3. Repositório no GitHub
 
-## 🔧 Configuração
+## Configuração
 
 ### 1. Importe o Projeto na Vercel
 
@@ -45,7 +45,7 @@ O projeto já está configurado com `vercel.json`. A Vercel vai:
 2. Aguarde o build terminar (~2-3 minutos)
 3. Acesse a URL gerada (ex: `https://etfs-app.vercel.app`)
 
-## ✅ Verificação
+## Verificação
 
 Após o deploy, verifique se:
 
@@ -55,7 +55,7 @@ Após o deploy, verifique se:
 - [ ] Os benchmarks (SELIC, IPCA, CDI) carregam corretamente
 - [ ] O tema claro/escuro funciona
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Erro "Failed to fetch"
 
@@ -83,11 +83,11 @@ Após o deploy, verifique se:
 
 **Solução:**
 1. Verifique os logs do build na Vercel
-2. Procure por "✅ environment.prod.ts gerado com sucesso!"
+2. Procure por "environment.prod.ts gerado com sucesso!"
 3. Se não aparecer, verifique se `vercel.json` está correto
 4. Confirme que `scripts/inject-env.js` existe no repositório
 
-## 🌐 Domínio Customizado
+## Domínio Customizado
 
 Para usar um domínio próprio:
 
@@ -96,7 +96,7 @@ Para usar um domínio próprio:
 3. Digite seu domínio (ex: `etfs-brasil.com`)
 4. Siga as instruções para configurar os registros DNS
 
-## 📊 Monitoramento
+## Monitoramento
 
 A Vercel oferece:
 
@@ -106,7 +106,7 @@ A Vercel oferece:
 
 Acesse em **Project > Analytics** e **Speed Insights**.
 
-## 🔄 Deploys Automáticos
+## Deploys Automáticos
 
 A Vercel faz deploy automático a cada push:
 
@@ -117,15 +117,15 @@ Para desativar:
 1. **Project Settings > Git**
 2. Configure **Production Branch** e **Preview Branches**
 
-## 📝 Notas Importantes
+## Notas Importantes
 
-- ⚠️ **Segurança:** O token é injetado durante o build e fica visível no código JavaScript do browser. Para uso em produção com alto tráfego, considere criar uma API proxy.
+- **Segurança:** O token é injetado durante o build e fica visível no código JavaScript do browser. Para uso em produção com alto tráfego, considere criar uma API proxy.
   
-- 💰 **Limites:** A brapi.dev tem limite de 15.000 requisições/mês no plano gratuito. Monitor o uso em [brapi.dev/dashboard](https://brapi.dev/dashboard).
+- **Limites:** A brapi.dev tem limite de 15.000 requisições/mês no plano gratuito. Monitor o uso em [brapi.dev/dashboard](https://brapi.dev/dashboard).
 
-- 🔒 **CORS:** A brapi.dev permite requisições do browser. Se mudar de API, verifique as políticas de CORS.
+- **CORS:** A brapi.dev permite requisições do browser. Se mudar de API, verifique as políticas de CORS.
 
-## 🆘 Suporte
+## Suporte
 
 - [Documentação Vercel](https://vercel.com/docs)
 - [Issues do Projeto](https://github.com/gabireze/etfs-app/issues)

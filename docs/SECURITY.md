@@ -1,8 +1,8 @@
-# 🔒 Segurança - Variáveis de Ambiente
+# Segurança - Variáveis de Ambiente
 
-## ⚠️ IMPORTANTE: O Que Pode Ir Pro Git?
+## IMPORTANTE: O Que Pode Ir Pro Git?
 
-### ✅ SEGURO para commitar
+### SEGURO para commitar
 
 ```
 src/environments/environment.ts          ← brapiToken: '' (vazio)
@@ -13,7 +13,7 @@ scripts/load-env.js                      ← Script (sem tokens)
 vercel.json                              ← Configuração (sem tokens)
 ```
 
-### ❌ NUNCA commitar
+### NUNCA commitar
 
 ```
 .env                                     ← Contém token real!
@@ -21,7 +21,7 @@ src/environments/environment.ts          ← Se tiver token preenchido
 src/environments/environment.prod.ts     ← Se tiver token preenchido
 ```
 
-## 🛡️ Como Funciona a Segurança
+## Como Funciona a Segurança
 
 ### 1. Desenvolvimento Local
 
@@ -39,7 +39,7 @@ export const environment = {
 1. Script `load-env.js` lê o `.env`
 2. Gera `environment.ts` com o token
 3. Angular roda com o token
-4. ⚠️ **ANTES de commitar, rode `git restore src/environments/`**
+4. **ANTES de commitar, rode `git restore src/environments/`**
 
 ### 2. Build na Vercel
 
@@ -58,9 +58,9 @@ export const environment = {
 2. Script `inject-env.js` lê `process.env`
 3. Sobrescreve `environment.prod.ts` com o token
 4. Angular compila com o token
-5. ✅ Token fica apenas no bundle compilado (na Vercel)
+5. Token fica apenas no bundle compilado (na Vercel)
 
-## 🔍 Verificação de Segurança
+## Verificação de Segurança
 
 ### Antes de Cada Commit
 
@@ -77,7 +77,7 @@ git restore src/environments/environment.prod.ts
 
 # 3. Verifique o .env está no .gitignore
 git check-ignore .env
-# Deve retornar: .env ✅
+# Deve retornar: .env
 ```
 
 ### Auditoria no GitHub
@@ -89,7 +89,7 @@ git log -S "fSfFxB2TPmV9pkLkHWjy31" --all
 # Se encontrar, é CRÍTICO rotacionar o token!
 ```
 
-## 🚨 O Que Fazer Se Expor um Token
+## O Que Fazer Se Expor um Token
 
 ### 1. Rotacione IMEDIATAMENTE
 1. Acesse [brapi.dev/dashboard](https://brapi.dev/dashboard)
@@ -118,7 +118,7 @@ git filter-branch --force --index-filter \
 git push --force --all
 ```
 
-## 📋 Checklist de Segurança
+## Checklist de Segurança
 
 ### Setup Inicial
 - [ ] `.env` está no `.gitignore`
@@ -137,21 +137,21 @@ git push --force --all
 - [ ] Build logs mostram token mascarado (`fSfFxB2T...`)
 - [ ] App funciona em produção
 
-## 🎯 Melhores Práticas
+## Melhores Práticas
 
-### ✅ SEMPRE
+### SEMPRE
 - Mantenha arquivos de environment vazios no Git
 - Use `.env` para desenvolvimento local
 - Use Vercel Environment Variables para produção
 - Rode scripts antes de `ng serve` e build
 
-### ❌ NUNCA
+### NUNCA
 - Commite o `.env`
 - Commite `environment.*.ts` com tokens
 - Compartilhe tokens em mensagens, issues, etc.
 - Use o mesmo token para dev e produção
 
-## 📚 Recursos
+## Recursos
 
 - [OWASP - API Security](https://owasp.org/www-project-api-security/)
 - [GitHub - Removing Sensitive Data](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
