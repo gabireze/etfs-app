@@ -10,6 +10,9 @@
 
 **[Ver Demo ao Vivo](https://etfs-app.vercel.app/)** | **[Reportar Bug](https://github.com/gabireze/etfs-app/issues)** | **[Solicitar Feature](https://github.com/gabireze/etfs-app/issues)**
 
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/etfs-app@github)](https://gitads.dev/v1/ad-track?source=gabireze/etfs-app@github)
+
 ## Funcionalidades
 
 ### Análise Completa
