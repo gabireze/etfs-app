@@ -1,4 +1,4 @@
 {
-  "buildCommand": "node scripts/inject-env.js && npm run build",
+  "buildCommand": "node scripts/inject-env.js && npm run build:prerender",
   "outputDirectory": "dist/etfs-app/browser"
 }

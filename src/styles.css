@@ -1,6 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+/* Prevent Flash of Unstyled Content (FOUC) */
+html {
+  background-color: #f7f9fc; /* Light theme default */
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #0f172a; /* Dark theme default */
+  }
+}
+
 /* Custom global styles */
 body {
   margin: 0;
@@ -9,6 +20,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background-color 0.2s ease;
 }
 
 /* Tema Claro - Inspirado em brapi.dev */
