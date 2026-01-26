@@ -23,7 +23,6 @@
     "ng": "ng",
     "start": "node scripts/load-env.js && ng serve",
     "build": "ng build --configuration production",
-    "build:prerender": "ng build --configuration production && ng run etfs-app:prerender:production",
     "build:dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

@@ -48,7 +48,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "550kB",
                   "maximumError": "1MB"
                 },
                 {
@@ -81,20 +81,6 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
-        },
-        "prerender": {
-          "builder": "@angular/build:prerender",
-          "options": {
-            "routes": ["/"]
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "etfs-app:build:production"
-            },
-            "development": {
-              "buildTarget": "etfs-app:build:development"
-            }
-          }
         }
       }
     }
