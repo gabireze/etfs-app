@@ -64,28 +64,40 @@ BRAPI_TOKEN=seu_token_aqui
 
 **Obtenha seu token gratuito**: [brapi.dev/dashboard](https://brapi.dev/dashboard)
 
+> 💡 **Nota**: O arquivo `.env` já está no `.gitignore` - seu token não será commitado.
+
 ## Como Usar
 
 ### Desenvolvimento
 ```bash
 npm start
-# ou
-ng serve
+# O script carrega automaticamente o token do .env
 ```
 Acesse: `http://localhost:4200`
 
 ### Build para Produção
 ```bash
 npm run build
-````
+```
 Os arquivos compilados estarão em `dist/etfs-app/browser/`
 
-### Deploy
+## 🚀 Deploy
+
+### Deploy na Vercel (Recomendado)
+Siga o guia completo: **[DEPLOY.md](./DEPLOY.md)**
+
+**Resumo rápido:**
+1. Importe o projeto na [Vercel](https://vercel.com/new)
+2. Configure `BRAPI_TOKEN` em Environment Variables
+3. Deploy automático ✅
+
+### Deploy Manual (Netlify, GitHub Pages)
 ```bash
-# Netlify, Vercel, ou GitHub Pages
 npm run build
 # Faça upload da pasta dist/etfs-app/browser/
 ```
+
+> ⚠️ **Importante**: Para Vercel, configure a variável `BRAPI_TOKEN` nas Environment Variables do projeto. O token será injetado automaticamente durante o build.
 
 ## Arquitetura
 

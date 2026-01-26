@@ -21,10 +21,13 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node scripts/load-env.js && ng serve",
+    "build": "ng build --configuration production",
+    "build:dev": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "env:dev": "node scripts/load-env.js",
+    "env:clean": "git restore src/environments/environment.ts src/environments/environment.prod.ts"
   },
   "prettier": {
     "printWidth": 100,
