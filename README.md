@@ -34,7 +34,7 @@
 
 ## Demo
 
-**[Ver Demo ao Vivo](https://etfs-brasil.app)** *(substitua pelo seu URL de deploy)*
+**[🚀 Ver Demo ao Vivo](https://etfs-app.vercel.app/)**
 
 ## Pré-requisitos
 
