@@ -1,0 +1,235 @@
+<div [class]="isDarkTheme ? 'dark-theme' : 'light-theme'" class="min-h-screen transition-colors duration-200" [style.background-color]="'var(--bg-primary)'">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-bold" [style.color]="'var(--text-primary)'">Simulador de Carteira de ETFs</h1>
+      <div class="flex gap-3">
+        <button
+          (click)="toggleTheme()"
+          class="px-4 py-2 rounded-lg transition-all duration-200 font-medium border-2"
+          [style.background-color]="'var(--bg-card)'"
+          [style.color]="'var(--text-primary)'"
+          [style.border-color]="'var(--border)'"
+          title="Alternar tema">
+          {{ isDarkTheme ? '☀️' : '🌙' }} Tema
+        </button>
+        <button
+          (click)="clearCache()"
+          class="px-4 py-2 rounded-lg transition-all duration-200 font-medium"
+          [style.background-color]="'var(--accent)'"
+          [style.color]="isDarkTheme ? '#ffffff' : '#ffffff'"
+          title="Limpar cache e recarregar dados">
+          🔄 Limpar Cache
+        </button>
+      </div>
+    </div>
+
+  <!-- Search Container -->
+  <div class="rounded-xl p-6 mb-8 shadow-lg" [style.background-color]="'var(--accent)'" [style.color]="isDarkTheme ? '#ffffff' : '#ffffff'">
+    <h3 class="text-lg font-semibold mb-4">Buscar ETF:</h3>
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Digite o ticker (ex: BOVA11, IVVB11)..."
+        [(ngModel)]="searchQuery"
+        (input)="onSearchInput(searchQuery)"
+        class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-colors"
+        [style.background-color]="'var(--bg-secondary)'"
+        [style.color]="'var(--text-primary)'"
+        [style.border-color]="'var(--border)'">
+      <div *ngIf="isSearching" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+        <div class="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent" [style.border-color]="'var(--accent)'"></div>
+      </div>
+    </div>
+    <div *ngIf="searchResults.length > 0" class="mt-3 rounded-lg shadow-lg max-h-72 overflow-y-auto" [style.background-color]="'var(--bg-secondary)'">
+      <div *ngFor="let result of searchResults"
+           class="search-result-item flex items-center gap-3 px-4 py-3 cursor-pointer border-b last:border-b-0 transition-colors"
+           [style.border-color]="'var(--border)'"
+           (click)="selectSearchResult(result)">
+        <span class="font-bold min-w-[80px]" [style.color]="'var(--accent)'">{{ result.ticker }}</span>
+        <span class="flex-1" [style.color]="'var(--text-secondary)'">{{ result.name }}</span>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold"
+              [style.background-color]="'var(--success)'"
+              [style.color]="isDarkTheme ? '#ffffff' : '#ffffff'">
+          {{ result.type === 'fund' ? 'ETF/FII' : 'Ação' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Container -->
+  <div class="mb-8">
+    <div *ngFor="let category of categories" class="mb-6">
+      <h4 class="text-sm font-semibold uppercase tracking-wide mb-3 pb-2 border-b-2"
+          [style.color]="'var(--text-secondary)'"
+          [style.border-color]="'var(--border)'">
+        {{ category.name }}
+      </h4>
+      <div class="flex flex-wrap gap-2">
+        <button *ngFor="let etf of category.etfs"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all duration-200 cursor-pointer"
+             [style.background-color]="isTickerSelected(etf.ticker) ? 'var(--accent)' : 'var(--bg-card)'"
+             [style.border-color]="isTickerSelected(etf.ticker) ? 'var(--accent)' : 'var(--border)'"
+             [style.color]="isTickerSelected(etf.ticker) ? '#ffffff' : 'var(--text-primary)'"
+             (click)="toggleTickerSelection(etf.ticker)">
+          <span class="font-bold text-sm">
+            {{ etf.ticker }}
+          </span>
+          <span class="text-xs" [style.color]="isTickerSelected(etf.ticker) ? '#ffffff' : 'var(--text-secondary)'">
+            {{ etf.name }}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="customEtfs.length > 0" class="mb-6">
+      <h4 class="text-sm font-semibold uppercase tracking-wide mb-3 pb-2 border-b-2"
+          [style.color]="'var(--text-secondary)'"
+          [style.border-color]="'var(--border)'">
+        Personalizado
+      </h4>
+      <div class="flex flex-wrap gap-2">
+        <button *ngFor="let etf of customEtfs"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-dashed transition-all duration-200 cursor-pointer"
+             [style.background-color]="isTickerSelected(etf.ticker) ? 'var(--accent)' : 'var(--bg-card)'"
+             [style.border-color]="isTickerSelected(etf.ticker) ? 'var(--accent)' : 'var(--border)'"
+             [style.color]="isTickerSelected(etf.ticker) ? '#ffffff' : 'var(--text-primary)'"
+             (click)="toggleTickerSelection(etf.ticker)">
+          <span class="font-bold text-sm">
+            {{ etf.ticker }}
+          </span>
+          <span class="text-xs" [style.color]="isTickerSelected(etf.ticker) ? '#ffffff' : 'var(--text-secondary)'">
+            {{ etf.name }}
+          </span>
+          <button
+            class="ml-1 w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold transition-colors"
+            [style.background-color]="isTickerSelected(etf.ticker) ? 'rgba(255,255,255,0.2)' : 'var(--bg-hover)'"
+            [style.color]="isTickerSelected(etf.ticker) ? '#ffffff' : 'var(--text-secondary)'"
+            (click)="removeCustomEtf(etf.ticker); $event.stopPropagation()"
+            title="Remover">
+            ×
+          </button>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weights Container -->
+  <div *ngIf="selectedTickers.length > 0" class="rounded-xl p-6 mb-8 shadow-lg border"
+       [style.background-color]="'var(--bg-card)'"
+       [style.border-color]="'var(--border)'">
+    <h3 class="text-xl font-semibold mb-4" [style.color]="'var(--text-primary)'">Pesos da Carteira (%):</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div *ngFor="let ticker of selectedTickers" class="flex flex-col">
+        <label [for]="'weight-' + ticker" class="text-sm font-medium mb-1" [style.color]="'var(--text-secondary)'">{{ ticker }}:</label>
+        <div class="flex items-center gap-2">
+          <input
+            type="number"
+            [id]="'weight-' + ticker"
+            [value]="portfolioWeights.get(ticker) || 0"
+            (input)="onWeightChange(ticker, +$any($event.target).value)"
+            min="0"
+            max="100"
+            step="1"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors"
+            [style.background-color]="'var(--bg-secondary)'"
+            [style.color]="'var(--text-primary)'"
+            [style.border-color]="'var(--border)'">
+          <span class="font-medium" [style.color]="'var(--text-secondary)'">%</span>
+        </div>
+      </div>
+    </div>
+    <p class="mt-4 text-sm" [style.color]="'var(--text-secondary)'">
+      Ajuste os pesos para simular diferentes alocações. Total:
+      <strong [style.color]="'var(--accent)'">{{ getTotalWeight().toFixed(1) }}%</strong>
+    </p>
+  </div>
+
+  <!-- Loading States -->
+  <div *ngIf="loadingList" class="flex flex-col items-center justify-center py-12">
+    <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-transparent mb-4" [style.border-color]="'var(--accent)'"></div>
+    <p [style.color]="'var(--text-secondary)'">Carregando lista de ETFs...</p>
+  </div>
+
+  <div *ngIf="loading" class="flex flex-col items-center justify-center py-12">
+    <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-transparent mb-4" [style.border-color]="'var(--accent)'"></div>
+    <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-transparent mb-4" [style.border-color]="'var(--accent)'"></div>
+    <p [style.color]="'var(--text-secondary)'">Calculando performance da carteira...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="border-l-4 p-4 mb-8 rounded-r-lg"
+       [style.background-color]="isDarkTheme ? '#44223a' : '#fee'"
+       [style.border-color]="'var(--error)'">
+    <p [style.color]="'var(--error)'"><strong>Erro:</strong> {{ error }}</p>
+  </div>
+
+  <!-- Performance Summary -->
+  <div *ngIf="showPerformance && !loading && !error" class="mb-8">
+    <h3 class="text-2xl font-bold mb-4" [style.color]="'var(--text-primary)'">Performance (3 meses):</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div *ngIf="selectedTickers.length > 0"
+           class="rounded-xl p-6 shadow-lg"
+           [style.background-color]="'var(--accent)'"
+           [style.color]="'#ffffff'">
+        <div class="text-sm font-medium opacity-90 mb-2">Sua Carteira</div>
+        <div class="text-3xl font-bold mb-2">
+          {{ portfolioReturn >= 0 ? '+' : '' }}{{ portfolioReturn.toFixed(2) }}%
+        </div>
+        <div class="text-xs opacity-80">Rentabilidade acumulada no período</div>
+      </div>
+
+      <div *ngIf="showSelic" class="rounded-xl p-6 border-2 shadow-lg"
+           [style.background-color]="'var(--bg-card)'"
+           [style.border-color]="'var(--border)'">
+        <div class="text-sm font-medium mb-2" [style.color]="'var(--text-secondary)'">SELIC (equivalente 3m)</div>
+        <div class="text-3xl font-bold mb-2" [style.color]="'var(--success)'">+{{ selicReturn.toFixed(2) }}%</div>
+        <div class="text-xs" [style.color]="'var(--text-secondary)'">Benchmark de renda fixa</div>
+      </div>
+
+      <div *ngIf="showInflation" class="rounded-xl p-6 border-2 shadow-lg"
+           [style.background-color]="'var(--bg-card)'"
+           [style.border-color]="'var(--border)'">
+        <div class="text-sm font-medium mb-2" [style.color]="'var(--text-secondary)'">IPCA (Inflação)</div>
+        <div class="text-3xl font-bold mb-2" [style.color]="'var(--warning)'">+{{ inflationReturn.toFixed(2) }}%</div>
+        <div class="text-xs" [style.color]="'var(--text-secondary)'">Perda de poder de compra</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div *ngIf="!loading && !error && ((lineChartData.datasets && lineChartData.datasets.length > 0) || (returnsChartData.datasets && returnsChartData.datasets.length > 0))"
+       class="space-y-8">
+    <div class="rounded-xl p-6 shadow-lg border"
+         [style.background-color]="'var(--bg-card)'"
+         [style.border-color]="'var(--border)'">
+      <h3 class="text-xl font-semibold mb-2" [style.color]="'var(--text-primary)'">Retorno Acumulado (%)</h3>
+      <p class="text-sm mb-4 italic" [style.color]="'var(--text-secondary)'">Todos começam de 0% no primeiro dia do período</p>
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [data]="returnsChartData"
+          [options]="returnsChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+    </div>
+
+    <div *ngIf="selectedTickers.length > 0" class="rounded-xl p-6 shadow-lg border"
+         [style.background-color]="'var(--bg-card)'"
+         [style.border-color]="'var(--border)'">
+      <h3 class="text-xl font-semibold mb-4" [style.color]="'var(--text-primary)'">Preços Históricos (R$)</h3>
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,11 @@
+/* Chart container - necessário para o Chart.js */
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+/* Search result hover effect */
+.search-result-item:hover {
+  background-color: var(--bg-hover);
+}

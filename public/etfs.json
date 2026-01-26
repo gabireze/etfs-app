@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "name": "Ações Brasil",
+      "etfs": [
+        { "ticker": "BOVA11", "name": "Ibovespa" },
+        { "ticker": "BOVV11", "name": "Ibovespa (alternativo)" },
+        { "ticker": "BBOV11", "name": "Ibovespa (alternativo)" },
+        { "ticker": "SMAL11", "name": "Small Caps" },
+        { "ticker": "HIGH11", "name": "Ibovespa Smart Beta" },
+        { "ticker": "XBOV11", "name": "XP Ibovespa" },
+        { "ticker": "PIBB11", "name": "Brasil 50" }
+      ]
+    },
+    {
+      "name": "Internacional",
+      "etfs": [
+        { "ticker": "IVVB11", "name": "S&P 500" },
+        { "ticker": "SPXI11", "name": "S&P 500 (alternativo)" },
+        { "ticker": "SPXB11", "name": "S&P 500 (alternativo)" },
+        { "ticker": "NASD11", "name": "Nasdaq 100" },
+        { "ticker": "ACWI11", "name": "Global (MSCI ACWI)" }
+      ]
+    },
+    {
+      "name": "Dividendos",
+      "etfs": [
+        { "ticker": "DIVO11", "name": "Dividendos" },
+        { "ticker": "DIVD11", "name": "Dividendos (alternativo)" },
+        { "ticker": "NDIV11", "name": "Dividendos (alternativo)" },
+        { "ticker": "QQQI11", "name": "Renda mensal (opções)" },
+        { "ticker": "SPYI11", "name": "Renda mensal (opções)" }
+      ]
+    },
+    {
+      "name": "Commodities & Metais",
+      "etfs": [
+        { "ticker": "GOLD11", "name": "Ouro" }
+      ]
+    },
+    {
+      "name": "Renda Fixa",
+      "etfs": [
+        { "ticker": "IMAB11", "name": "Títulos públicos (IMA-B)" },
+        { "ticker": "FIXA11", "name": "Renda fixa pré-fixada" },
+        { "ticker": "IB5M11", "name": "Títulos públicos (IMA-B 5+)" },
+        { "ticker": "HGBR11", "name": "Crédito privado" }
+      ]
+    },
+    {
+      "name": "Temáticos & Setoriais",
+      "etfs": [
+        { "ticker": "ESGB11", "name": "ESG Brasil" },
+        { "ticker": "ALUG11", "name": "Imobiliário" }
+      ]
+    },
+    {
+      "name": "Cripto",
+      "etfs": [
+        { "ticker": "HASH11", "name": "Criptomoedas diversificado" },
+        { "ticker": "QBTC11", "name": "Bitcoin" },
+        { "ticker": "QETH11", "name": "Ethereum" },
+        { "ticker": "DEFI11", "name": "DeFi" }
+      ]
+    }
+  ]
+}
