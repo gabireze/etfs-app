@@ -8,7 +8,7 @@
 [![Chart.js](https://img.shields.io/badge/Chart.js-4.5-FF6384?logo=chartdotjs)](https://www.chartjs.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**[Ver Demo ao Vivo](https://etfs-app.vercel.app/)** | **[Reportar Bug](https://github.com/gabireze/etfs-app/issues)** | **[Solicitar Feature](https://github.com/gabireze/etfs-app/issues)**
+**[Reportar Bug](https://github.com/gabireze/etfs-app/issues)** | **[Solicitar Feature](https://github.com/gabireze/etfs-app/issues)**
 
 ## GitAds Sponsored
 [![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/etfs-app@github)](https://gitads.dev/v1/ad-track?source=gabireze/etfs-app@github)
@@ -35,10 +35,6 @@
 - **Cripto**: HASH11, QBTC11, QETH11
 - **Commodities**: GOLD11
 - **Setoriais**: ESGB11, ALUG11
-
-## Demo
-
-**[Ver Demo ao Vivo](https://etfs-app.vercel.app/)**
 
 ## Pré-requisitos
 
@@ -84,24 +80,6 @@ Acesse: `http://localhost:4200`
 npm run build
 ```
 Os arquivos compilados estarão em `dist/etfs-app/browser/`
-
-## Deploy
-
-### Deploy na Vercel (Recomendado)
-Siga o guia completo: **[DEPLOY.md](./DEPLOY.md)**
-
-**Resumo rápido:**
-1. Importe o projeto na [Vercel](https://vercel.com/new)
-2. Configure `BRAPI_TOKEN` em Environment Variables
-3. Deploy automático
-
-### Deploy Manual (Netlify, GitHub Pages)
-```bash
-npm run build
-# Faça upload da pasta dist/etfs-app/browser/
-```
-
-> **Importante**: Para Vercel, configure a variável `BRAPI_TOKEN` nas Environment Variables do projeto. O token será injetado automaticamente durante o build.
 
 ## Arquitetura
 
